@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+  <script src="js.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <h1>Informacion de la Pantalla</h1>
+  <span>Ancho:</span>
+  <span id="p1"></span>
+  <br>
+  <span>Altura:</span>
+  <span id="p2"></span>
+  <br>
+  <span>Ancho sin barras:</span>
+  <span id="p3"></span>
+  <br>
+  <span>Altura sin barras:</span>
+  <span id="p4"></span>
+  <br>
+  <span>Profundidad de color:</span>
+  <span id="p5"></span>
+  <br>
+  <span>Profundidad de color en bits</span>
+  <span id="p6"></span>
+  <br>
+  <span>Orientacion: </span>
+  <span id="p7"></span>
+  <br>
+  <span>Orientacion: </span>
+  <span id="p8"></span>
+  <br>
+  <p>Pantalla Completa</p>
+
+  <p>Bloquear Pantalla</p>
+
+  <p>Desbloquear Pantalla</p>
+</body>
+<script>
+  window.onload = function () {
+    const elemento = document.documentElement;
+    document.querySelector("p").onclick = function () {
+      if (elemento.requestFullscreen) {
+        elemento.requestFullscreen()
+      }
+      else if (elemento.mozRequestFullscreen) {
+        elemento.mozRequestFullscreen()
+      }
+      else if (elemento.webkitRequestFullscreen) {
+        elemento.webkitRequestFullscreen()
+      }
+      else if (elemento.msRequestFullscreen) {
+        elemento.msRequestFullscreen()
+      }
+    }
+    document.querySelectorAll("p")[1].onclick = function () {
+      screen.orientation.lock('landscape');
+
+    }
+    document.querySelectorAll("p")[2].onclick = function () {
+      screen.orientation.unlock('landscape');
+
+    }
+    p1.innerHTML = screen.width;
+    p2.innerHTML = screen.height;
+    p3.innerHTML = screen.availWidth;
+    p4.innerHTML = screen.availHeight;
+    p5.innerHTML = screen.colorDepth;
+    p6.innerHTML = screen.pixelDepth;
+    p7.innerHTML = screen.orientation.type;
+    p8.innerHTML = + screen.orientation.angle;
+    screen.orientation.addEventListener('change', function () {
+      p7.innerHTML = screen.orientation.type;
+    });
+    screen.orientation.addEventListener('change', function () {
+      p8.innerHTML = screen.orientation.angle;
+    });
+
+  }
+
+</script>
+
+</html>
