@@ -58,7 +58,10 @@
         elemento.msRequestFullscreen()
       }
     }
+    document.querySelectorAll("p")[1].onclick = function () {
+      screen.orientation.lock('landscape');
 
+    }
     p1.innerHTML = screen.width;
     p2.innerHTML = screen.height;
     p3.innerHTML = screen.availWidth;
@@ -73,7 +76,7 @@
     screen.orientation.addEventListener('change', function () {
       p8.innerHTML = screen.orientation.angle;
     });
-    screen.orientation.lock('landscape');
+
   }
 
 </script>
